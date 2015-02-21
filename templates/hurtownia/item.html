@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1> {{ item.name }} </h1>
+
+            <p>
+                Posted on
+                <time datetime="{{ item.created|date:"c" }}">
+                    {{ item.created|date }}
+                </time>
+            </p>
+        </header>
+        <p class="description">
+            {{ item.id }}<br/>
+            {{ item.description }}
+        </p>
+        {{ item.lastModification|safe }}
+    </article>
+{% endblock %}
