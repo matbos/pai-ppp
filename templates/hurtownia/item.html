@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
-
+{% load num_range %}
 {% block title %}{{ item.name }}{% endblock %}
 
 {% block content %}
     <article>
         <header>
-            <h1> {{ item.name }} </h1>
-
-            <p>
-                Posted on
-                <time datetime="{{ item.created|date:"c" }}">
-                    {{ item.created|date }}
-                </time>
-            </p>
+            <h1 class="header"> {{ item.name }} </h1>
         </header>
-        <p class="description">
-            {{ item.id }}<br/>
+        <div><h3>Description:</h3></div>
+        <div><p>
             {{ item.description }}
         </p>
-        {{ item.lastModification|safe }}
+        </div>
+        <div><h3>Price:</h3></div>
+        <div><p>
+            {{ item.price }}
+        </p>
+        </div>
+        <span>Last modification: </span>
+        <time datetime="{{ item.lastModification|date:"c" }}">
+            {{ item.lastModification|date }}
+        </time>
     </article>
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}My settings - {{ user.name }}{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1 class="header">My profile</h1>
+        </header>
+        {% if message %}
+            <div class="{{ message_class }}">
+                {{ message }}
+            </div>
+        {% endif %}
+        <div>
+            <div><span>Username: </span><span>{{ user.username }}</span></div>
+            <div><span>First name: </span><span>{{ user.first_name }}</span><span
+                    style="margin-left: 10px"><a
+                    href="/account/first_name">Change</a></span></div>
+            <div><span>Last name: </span><span>{{ user.last_name }}</span><span
+                    style="margin-left: 10px"><a
+                    href="/account/last_name">Change</a></span></div>
+            <div><span>Email: </span><span>{{ user.email }}</span><span style="margin-left: 10px"><a
+                    href="/account/email">Change</a></span></div>
+            <div><span>Date joined: </span><span>{{ user.date_joined }}</span></div>
+            <div><span>Last login: </span><span>{{ user.last_login }}</span></div>
+            <br/>
+
+            <div><a href="/account/password/">Change password</a></div>
+            <div></div>
+        </div>
+    </article>
+{% endblock %}

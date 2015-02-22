@@ -1,26 +1,29 @@
 {% extends 'base.html' %}
-
-
-{% block title %} Blog Archive {% endblock %}
+{% load num_range %}
+{% load repeat %}
+{% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-    <h1> My Blog Archive </h1>
+    <h1> All items </h1>
     {% for item in items %}
-        <div class="item">
-            <h2>
-                <a href="{{ item.get_absolute_url }}">
+        <a href="{{ item.get_absolute_url }}">
+            <div class="item"
+                 style="display: table; border-collapse: separate; border-spacing: 10px">
+                <div style="display: table-cell; text-align: center;">
+                    <img width="100px" height="100px" src="{{ item.photo_set.all.0.image.url }}"/>
+                </div>
+                <div style="width:80%; display: table-cell; vertical-align: middle; ">
                     {{ item.name }}
-                </a>
-            </h2>
-
-            <p>{{ item.description }}</p>
-
-            <p>
-                Posted on
-                <time datetime="{{ item.created|date:"c" }}">
-                    {{ item.created|date }}
-                </time>
-            </p>
+                </div>
+                <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                    {{ item.price }}
+                </div>
+            </div>
+        </a>
+    {% empty %}
+        <div>
+            There are no item in the shop!
         </div>
     {% endfor %}
+
 {% endblock %}

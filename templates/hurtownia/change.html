@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        <div style="display:none">
+            <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+            <input type="hidden" value="{{ what }}" name="what">
+        </div>
+        <table>
+            <tr>
+                <td>{{ form.old_password.errors }}
+                    <label for="newValue">{{ label }}</label>
+                    <input id="newValue" name="newValue" type="text"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Set"/></td>
+            </tr>
+        </table>
+    </form>
+
+{% endblock %}

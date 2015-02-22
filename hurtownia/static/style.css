@@ -1,18 +1,87 @@
 body {
     background-color: #fdfdfd;
     color: #2e2e2e;
-    margin: 0;
     padding: 0;
     font-size: 14px;
     line-height: 28px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.container {
+    overflow: hidden;
+}
+
+.left {
+    float: left;
+    width: 20%;
+    max-width: 200px;
+}
+
+.right {
+    float: left;
+    width: 60%;
+    padding: 0 20px;
+}
+
+h1.header {
+    font-family: 'Script MT Bold', Helvetica, Arial, sans-serif;
+}
+
+.communicate {
+    font-family: 'Script MT Bold', Helvetica, sans-serif;
+    font-size: 18pt;
+}
+
+.positive {
+    background: lightgreen;
+    border: solid 1px darkgreen;
+    color: darkgreen;
+    padding: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+.negative {
+    background: lightcoral;
+    border: solid 1px darkred;
+    color: darkred;
+    padding: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+.headerContainer {
+    overflow: hidden;
+}
+
+.leftHeader {
+    float: left;
+    width: 20%;
+    max-width: 200px;
+}
+
+.rightHeader {
+    float: right;
+    background: lightgoldenrodyellow;
+    padding: 0 20px;
+}
+
+div.navigation {
+    display: inline;
+    width: 20%;
+    background: #7DF;
+    margin: 0;
+    float: left;
+}
+
 div.content {
+    display: inline;
+    width: 80%;
+    margin: 0;
     border: 1px solid #fbfbfb;
     background-color: #fff;
-    max-width: 640px;
-    width: 96%;
-    padding: 2%;
-    margin: 28px auto;
+    float: left;
 }

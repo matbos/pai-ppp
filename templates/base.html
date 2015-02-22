@@ -1,3 +1,5 @@
+{% load repeat %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +10,42 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style.css">
 </head>
 <body>
-<div class="content">
-    {% block content %}
-    {% endblock %}
+<div class="headerContainer">
+    <div class="container">
+        <div class="leftHeader">
+            <a href="/"><img src="{{ MEDIA_URL }}logo.png"/></a>
+        </div>
+        <div class="rightHeader">
+            {% if user.is_active %}
+                <span style="padding: 2px;"><a href="/account/">My Profile</a></span>
+                <span style="padding: 2px;"><a href="/logout/">Logout</a></span>
+            {% else %}
+                <span style="padding: 2px;"><a href="/login/">Login</a></span>
+                <span style="padding: 2px;"><a href="/register/">Register</a></span>
+            {% endif %}
+            <span style="padding: 2px;"><a href="/cart/">Cart</a></span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="left">
+        {% if categories %}
+            <h1 class="header"> Navigation </h1>
+            {% for cat in categories %}
+                <div><a href="{{ cat.0.get_absolute_url }}"><span>{% repeat cat.1 %}
+                    -{% endrepeat %} </span><span>{{ cat.0.title }}</span></a></div>
+            {% endfor %}
+            {% block navigation %}
+            {% endblock %}
+        {% endif %}
+    </div>
+    <div class="right">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<div class="footerContent">
+
 </div>
 </body>
 </html>

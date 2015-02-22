@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load num_range %}
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1 class="communicate">
+                All items listed in the {{ category.title }} category
+            </h1>
+        </header>
+        {% for item in items %}
+            <a href="{{ item.get_absolute_url }}">
+                <div class="item"
+                     style="display: table; border-collapse: separate; border-spacing: 10px">
+                    <div style="display: table-cell; text-align: center;">
+                        <img width="100px" height="100px"
+                             src="{{ item.photo_set.all.0.image.url }}"/>
+                    </div>
+                    <div style="width:80%; display: table-cell; vertical-align: middle; ">
+                        {{ item.name }}
+                    </div>
+                    <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                        {{ item.price }}
+                    </div>
+                </div>
+            </a>
+        {% empty %}
+            <div style="margin-right: auto; margin-left: auto; margin-top:100px">
+                <span class="communicate">
+                This category contains no items!
+                </span>
+            </div>
+            {#            {% for photo in item.photo_set.all %}#}
+            {#                <img src="{{ photo.image.url }}"/>#}
+            {#            {% endfor %}#}
+        {% endfor %}
+    </article>
+{% endblock %}

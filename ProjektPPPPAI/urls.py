@@ -7,10 +7,21 @@ admin.autodiscover()
 urlpatterns = patterns('',
                        # Examples:
                        # url(r'^$', 'ProjektPPPPAI.views.home', name='home'),
-                       # url(r'^blog/', include('blog.urls')),
-
+                       url(r'.*.html', 'hurtownia.views.index'),
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^item/(.*)', 'hurtownia.views.item', name="item"))
+                       url(r'^item/(?P<item>.*)', 'hurtownia.views.item_view'),
+                       url(r'^category/(?P<cat_id>\d+)/(?P<cat_slug>.*)',
+                           'hurtownia.views.category_view'),
+                       url(r'^login/$', 'django.contrib.auth.views.login',
+                           {'template_name': 'hurtownia/login.html'}),
+                       url(r'^logout/$', 'hurtownia.views.logout_view'),
+                       url(r'^account/$', 'hurtownia.views.my_account'),
+                       url(r'^account/password/', 'django.contrib.auth.views.password_change',
+                           {'template_name': 'hurtownia/password.html',
+                            'post_change_redirect': '/done/'}),
+                       url(r'^done/', 'hurtownia.views.password_done'),
+                       url(r'^account/(?P<action>.*)', 'hurtownia.views.account_change_view'),
+                       url(r'^user/(?P<user_name>.*)', 'hurtownia.views.user_view'))
 
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
