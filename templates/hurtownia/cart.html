@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load num_range %}
+{% load repeat %}
+{% block title %} Your cart {% endblock %}
+
+{% block content %}
+    <h1> Content of your cart </h1>
+    <div style="display: table; width: 100%; border-collapse: separate; border-spacing: 10px">
+        <div class="item" style="display: table-row">
+            <div style="display: table-cell; text-align: center;">
+                Image
+            </div>
+            <div style="width:80%; display: table-cell; vertical-align: middle; ">
+                Name
+            </div>
+            <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                Price
+            </div>
+            <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                Amount
+            </div>
+            <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                Action
+            </div>
+        </div>
+        {% for item in cart %}
+            <div class="item" style="display: table-row">
+                <div style="display: table-cell; text-align: center;">
+                    <img width="100px" height="100px" src="{{ item.0.photo_set.all.0.image.url }}"/>
+                </div>
+                <div style="width:80%; display: table-cell; vertical-align: middle; ">
+                    {{ item.0.name }}
+                </div>
+                <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                    {{ item.0.price }}
+                </div>
+                <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                    {{ item.1 }}
+                </div>
+                <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                    <a href="/cart/add/{{ item.0.id }}/1/"><img src="/media/plus.jpeg"
+                                                                height="20px"
+                                                                width="20px"/></a>
+                    <a href="/cart/remove/{{ item.0.id }}/1/"><img src="/media/minus.jpg"
+                                                                   height="20px"
+                                                                   width="20px"/></a>
+                    <a href="/cart/remove/{{ item.0.id }}/"><img src="/media/trash.png"
+                                                                 height="50px"
+                                                                 width="50px"/></a>
+                </div>
+            </div>
+        {% empty %}
+            <div>
+                There are no items in your cart, continue shopping!
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

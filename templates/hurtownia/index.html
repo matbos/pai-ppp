@@ -18,6 +18,10 @@
                 <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
                     {{ item.price }}
                 </div>
+                <div style="display: table-cell;  width: 5%; margin: 10px 0; vertical-align: middle; horiz-align: right;">
+                    <a href="/cart/add/{{ item.id }}/1/"><img src="/media/cart.jpg" height="20px"
+                                                              width="20px"/></a>
+                </div>
             </div>
         </a>
     {% empty %}
